@@ -51,7 +51,7 @@ import { useRouter } from "next/navigation";
         <Sidebar />
         <div className="main">
           <div className="title">Games</div>
-          <Link href="/admin/create-game">
+          <Link href="/admin/add-game">
         <button className="register">
           <svg
             viewBox="0 0 24 24"

@@ -4,7 +4,6 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useSelector } from "react-redux";
 import { useRef } from "react";
-import { useParams } from "react-router-dom";
 import Sidebar from "../../components/admin/Sidebar";
 import { useForm } from "react-hook-form";
 import { createGame } from "@/app/apis";
@@ -14,7 +13,6 @@ import Link from "next/link";
 const AddGame = () => {
   const auth = useSelector((state) => state.auth);
   const router = useRouter();
-  const pathname = useParams();
   const {
     handleSubmit,
     register,
