@@ -1,0 +1,43 @@
+%primary-input {
+        width: 100%;
+          border: none;
+          outline: none;
+          background: none;
+          border: 1px solid #fff;
+          height: 50px;
+          border-radius: 8px;
+          padding-left: 10px;
+          color: $text-color;
+          font-size: 16px;
+}
+
+%normal-input {
+  width: 100%;
+    border: none;
+    outline: none;
+    background-color: #f0f0f0;
+    height: 50px;
+    border-radius: 7px;
+    padding: 5px;
+    margin-top: 10px;
+    font-size: 16px;
+
+}
+
+%normal-textarea {
+width: 100%;
+    border: none;
+    outline: none;
+    height: 180px !important;
+    background-color: #f0f0f0;
+    height: 50px;
+    border-radius: 7px;
+    padding: 5px;
+    font-size: 16px;
+
+}
+
+
+%normal-label {
+font-size: 16px;
+}

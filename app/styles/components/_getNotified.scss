@@ -1,0 +1,84 @@
+.notif {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    // background: yellow;
+    margin-bottom: 120px;
+
+    &__title {
+    @extend %title-60;
+    margin-bottom: 16px;
+    text-align: center;
+}
+    &__subtitle {
+    @extend %title-24;
+    margin-bottom: 32px;
+    text-align: center
+}
+button {
+    @extend %outlined-button;
+}
+
+&__modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+
+    &__inner {
+        width: 100%;
+        max-width: 600px;
+        background: #000;
+        border: 1px solid #fff;
+        border-radius: 16px;
+        padding: 20px;
+
+        &__title {
+            display: flex;
+            justify-content: end;
+            margin-bottom: 40px;
+
+            & > svg {
+                cursor: pointer;
+            }
+        }
+
+        &__form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            & > input {
+                @extend %primary-input;
+                margin-bottom: 24px;
+            }
+            & > button {
+                @extend %outlined-button;
+                padding: 0 80px;
+            }
+        }
+
+        &__message {
+            &__title {
+                @extend %title-32;
+                text-align: center;
+margin-bottom: 20px;
+            }
+            &__subtitle {
+                @extend %title-20;
+            text-align: center;
+            margin-bottom: 40px;
+
+            }
+        }
+    }
+}
+}

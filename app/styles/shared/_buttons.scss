@@ -1,0 +1,51 @@
+.outlined-button, %outlined-button {
+    width: fit-content;
+    padding: 0 20px;
+    white-space: nowrap;
+    height: 50px;
+    border-radius: 24px;
+    font-family: 16px;
+    font-weight: 500;
+    border: 1px solid #fff;
+    background: none;
+    color: $text-color;
+    color: #fff;
+}
+
+  
+  
+  %midButton--filled {
+    width: 26.4rem;
+    height: 4.4rem;
+    background-color: #4a739c;
+    border-radius: 20px;
+    color: #fff;
+    border: none;
+    outline: none;
+    font-size: 1.4rem;
+    transition: 0.4s;
+  
+    &:hover {
+      border: 1px solid #4a739c;
+      background: transparent;
+      color: #4a739c;
+    }
+  }
+  
+  %midButton--trans {
+    width: 26.4rem;
+    height: 4.4rem;
+    border-radius: 20px;
+    color: #4a739c;
+    border: 1px solid #4a739c;
+    outline: none;
+    font-size: 1.4rem;
+    transition: 0.4s;
+  
+    &:hover {
+      border: none;
+      background-color: #4a739c;
+      color: #fff;
+    }
+  }
+  

@@ -1,0 +1,123 @@
+
+
+.admin_nav-container {
+    width: 296px;
+    height: 100vh;
+    max-height: 1fffpx;
+    background-color: #4a739c;
+    padding: 40px 0;
+
+    
+    
+  }
+  
+  .admin_nav-container-inner {
+    /* background-color: blue; */
+    height: 70%;
+    overflow: auto;
+
+   
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  
+  }
+  
+  .admin_nav-flex {
+    display: flex;
+    align-items: center;
+    color: #FFF;
+    font-size: 1.2rem;
+    /* background-color: teal; */
+    /* margin-left: 30px; */
+    border-radius: 12px;
+    padding: 10px 37px 10px 20px;
+  }
+  
+  
+  
+  .admin_nav-flex-container {
+    width: 100%;
+        margin-bottom: 0.8rem;
+          padding: 0 44px 0 24px;
+    height: fit-content;
+  
+  
+  
+  }
+  
+  // .admin_nav-active {
+  //     border-left: 10px solid #ffffff;
+  // }
+  
+  .link {
+    text-decoration: none !important;
+
+  }
+  .admin_nav-flex-active {
+    background-color: #ffffff;
+    color: #1a1a1a !important;
+  
+  }
+  
+  
+  .admin_nav-logo_container {
+    position: sticky;
+  }
+  
+  .admin_nav-logo {
+    /* margin-top: 10px !important; */
+    width: 89px !important;
+    height: auto;
+    margin-bottom: 10px !important;
+    margin-left: 40px;
+  }
+  
+  .admin_nav-svg {
+    width: 1.8rem;
+    height: 1.8rem;
+    margin-right: 0.8rem;
+  }
+  
+  .admin_nav-svg-active path {
+    fill: #2A3F54 !important;
+  }
+  
+  .admin_nav-logo_container {
+  /* background-color: yellow; */
+  height: 15%;
+  
+  }
+  
+  .admin_nav-footer {
+    margin-left: 40px;
+    color: #fff;
+    font-size: 1.2rem;
+    //  background-color: blue; 
+
+    img {
+      width: 100px;
+      height: auto;
+      margin-top: 2rem;
+    }
+  }
+  
+  .admin_nav-footer-img {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    margin-right: 17px;
+  }
+ 
+  .admin_nav-footer-title {
+    font-weight: 600px;
+    font-size: 1.6rem;
+  } 
+  .admin_nav-footer-subtitle {
+    font-weight: 500px;
+    color: #fff;
+    font-size: 1.4rem;
+    margin-top: 1.4rem;
+    text-decoration: underline;
+  } 

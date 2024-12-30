@@ -1,0 +1,139 @@
+
+  
+      .testimonials {
+        // max-width: 1192px;
+        // width: 100%;
+        padding: 40px 0;
+        margin: 160px auto 0 auto;
+        overflow: hidden;
+        scroll-behavior: smooth;
+        transition: 0.3s;
+        position: relative;
+        // background: yellow;
+  
+        @media (max-width: $phone) {
+          padding: 0;
+        margin: 0 auto 0 auto;
+        height: 400px;
+  
+        }
+  
+        &__slider {
+          display: flex;
+          align-items: center;
+          gap: 20px;
+          // overflow: auto;
+          // position: absolute;
+          // top: 0;
+          // left: 0;
+          height: 100%;
+          // animation: marqueeX 15s linear infinite;
+         
+          //The idea for this animation is to find a point during the animation that looks like the beginning of the animation and restart the animation at that point. This gives the feel that the animation is endless. Kind of like when the end ov a video is exaclty the same as the beginnig. you would not know when you've started watching the video all over again
+  
+  
+          &::-webkit-scrollbar {
+            display: none;
+          }
+  
+          &:hover {
+            animation-play-state: paused;
+          }
+  
+          &__card {
+            min-width: 650px;
+            padding: 8px 8px 12px 8px;
+            border-radius: 16px;
+            background: rgba(20, 20, 20, 1);
+            transition: transform 0.7s;
+            cursor: pointer;
+            // transform: skewX(20deg);
+  
+            @media (max-width: $tablet) {
+              min-width: 400px;
+            }
+  
+            &__img {
+              width: 100%;
+              height: 450px;
+              position: relative;
+              // cursor: pointer;
+  
+              @media (max-width: $tablet) {
+                height: 250px;
+              }
+  
+              & > img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                border-radius: 8px;
+              }
+  
+              &__text {
+                @extend %text-normal;
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                background: #000;
+                color: #fff;
+                top: 0;
+                left: 0;
+                border-radius: 8px;
+                padding: 14px;
+                padding-top: 62px;
+                font-size: 3.2rem;
+                transition: 0.3s;
+                clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%);
+
+                & > svg {
+                    position: absolute;
+                    top: 14px;
+                    left: 14px;
+                    width: 34px;
+                }
+              }
+            }
+  
+            &__flex {
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+              font-size: 12px;
+              margin-top: 0.8rem;
+  
+              & > :first-child {
+                font-weight: 700;
+                font-size: 14px;
+              }
+            }
+  
+            &:hover {
+              // transition: 0.3s;
+              transition: 0.3s;
+              // cursor: pointer;
+  
+              transform: rotate(-5deg);
+              .testimonials__slider__card__img {
+                & > img {
+                    // opacity: 0;
+                }
+                .testimonials__slider__card__img__text {
+                  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+                }
+              }
+            }
+          }
+  
+          @keyframes marqueeX {
+            0% {
+              transform: translateX(0);
+            }
+            100% {
+              transform: translateX(calc(-650px * var(--item-count) - (20px * var(--item-count))));
+            }
+          }
+        }
+      }
+    
+  

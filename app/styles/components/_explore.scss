@@ -1,0 +1,201 @@
+.exploreMain {
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    align-self: unset;
+    font-family: "Space Grotesk";
+    font-weight: 700;
+    margin-bottom: 40px;
+    padding: 0 60px;
+    margin-top: 100px;
+  
+    @media (max-width: $tablet) {
+      padding: 0 20px;
+    }
+  
+    &__title {
+      font-size: 4rem;
+      font-weight: 700;
+      margin-bottom: 4rem;
+  
+      @media (max-width: $phone) {
+        font-size: 20px;
+      }
+    }
+  
+    &__nav {
+      border-bottom: 2px solid rgba(43, 43, 43, 1);
+      display: flex;
+      align-items: center;
+      margin-bottom: 4rem;
+      gap: 20px;
+      font-size: 16px;
+      overflow-x: auto;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+
+  
+      & > div {
+        min-width: 174px;
+        height: 36px;
+        cursor: pointer;
+        border-radius: 10px 10px 0px 0px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 20px;
+  
+         @media (max-width: $phone) {
+        width: fit-content;
+        padding: 0 10px;
+        }
+      }
+  
+      &__active {
+        background: rgba(255, 255, 255, 1);
+        color: rgba(0, 0, 0, 1);
+      }
+    }
+  
+    &__grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      gap: 40px 60px;
+      min-height: 400px;
+  
+      @media (max-width: $ipadpro) {
+        grid-template-columns: 1fr 1fr 1fr;
+      }
+      @media (max-width: $tablet) {
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+      }
+      @media (max-width: $phone) {
+        grid-template-columns: 1fr;
+      }
+  
+      &__card {
+        width: 100%;
+        height: fit-content;
+        border-radius: 16px;
+        background: rgba(20, 20, 20, 1);
+        padding: 10px;
+        padding-bottom: 20px;
+        cursor: pointer;
+  
+        img {
+          width: 100%;
+          height: 266px;
+          object-fit: cover;
+          border-radius: 6px;
+          margin-bottom: 10px;
+        }
+  
+        &__title {
+          font-size: 1.4rem;
+          margin-bottom: 10px;
+          
+          @media (max-width: $phone) {
+            font-size: 10px;
+          }
+        }
+  
+        &__subtitle-group {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          font-size: 1.2rem;
+          margin-bottom: 1.4rem;
+          color: rgba(255, 255, 255, 0.5);
+  
+          @media (max-width: $phone) {
+            font-size: 8px;
+            margin-top: 3rem;
+            margin-bottom: 2.4rem;
+          }
+  
+          & > :first-child {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-weight: 400;
+          }
+        }
+  
+        &__subsubtitle {
+          font-size: 1.4rem;
+          margin-bottom: 10px;
+  
+          @media (max-width: $phone) {
+            font-size: 10px;
+          }
+  
+          span {
+            color: rgba(111, 124, 217, 1);
+          }
+        }
+  
+        &__divider {
+          width: 100%;
+          height: 1px;
+          background: rgba(43, 43, 43, 1);
+          margin-bottom: 10px;
+  
+          @media (max-width: $phone) {
+            font-size: 10px;
+            margin: 2rem 0 2rem 0;
+          }
+        }
+  
+        &__subsubtitle-group {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          font-weight: 400;
+          font-size: 1.2rem;
+          color: rgba(255, 255, 255, 0.5);
+  
+          @media (max-width: $phone) {
+            font-size: 8px;
+          }
+  
+          & > :first-child {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            img {
+              width: 24px;
+              height: 24px;
+              border: 50%;
+              margin-bottom: 0;
+            }
+          }
+  
+          & > :last-child {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-weight: 500;
+          }
+        }
+      }
+    }
+  
+    &__button {
+      width: 178px;
+      height: 49px;
+      border-radius: 15px;
+      background: #91191A;
+      border: none;
+      outline: none;
+      font-size: 16px;
+      font-weight: 700;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: auto;
+      margin-top: 5rem;
+    }
+  }
