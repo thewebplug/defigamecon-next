@@ -4,7 +4,7 @@ import Explore from "../components/explore";
 import Footer from "../components/footer";
 import EventCard from "../components/eventCard";
 import { getAllEvents } from "@/app/apis";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useSearchParams } from "next/navigation";
 
@@ -33,7 +33,7 @@ export default function Events() {
   
 
   return (
-    <>
+    <Suspense fallback={<div>Loading...</div>}>
       <br />
       <br />
       <Header />
@@ -50,6 +50,6 @@ export default function Events() {
 
       <Explore />
       <Footer />
-    </>
+    </Suspense>
   );
 }
