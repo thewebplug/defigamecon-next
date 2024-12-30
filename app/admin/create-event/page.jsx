@@ -1,13 +1,12 @@
-import { Select, MenuItem, Badge } from "@mui/material";
-import React, { useEffect, useState } from "react";
-import Resizer from "react-image-file-resizer";
+"use client"
+import { Badge } from "@mui/material";
+import React, { useState } from "react";
 import axios from "axios";
 import { useSelector } from "react-redux";
 import { useRef } from "react";
-import { useParams } from "react-router-dom";
 import Sidebar from "../../components/admin/Sidebar";
 import { useForm } from "react-hook-form";
-import { createEvent } from "../@/app/apis";
+import { createEvent } from "@/app/apis";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 
@@ -15,7 +14,6 @@ const CreateEvent = () => {
   const router = useRouter();
 
   const auth = useSelector((state) => state.auth);
-  const pathname = useParams();
   const {
     handleSubmit,
     register,
@@ -111,7 +109,7 @@ const CreateEvent = () => {
           axios
             .post(
               // `${process.env.REACT_APP_DEV_URL}/files/upload`,
-              `${process.env.REACT_APP_PROD_URL}/files/upload`,
+              `${process.env.NEXT_PUBLIC_URL}/files/upload`,
               {
                 image: result,
               },

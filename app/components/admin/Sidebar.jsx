@@ -1,12 +1,12 @@
-import { useRouter } from "next/navigation";
+import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
 import React from "react";
 // import Logo from "../img/InnovateVillageArtboard-2.png";
 
 import { useDispatch } from "react-redux";
-import { Link, useLocation } from "react-router-dom";
 
 const Sidebar = () => {
-  const pathname = useLocation();
+  const pathname = usePathname();
   console.log('pathname', pathname);
   
   const dispatch = useDispatch();
@@ -28,24 +28,24 @@ const Sidebar = () => {
       </div>
 
       <div className="admin_nav-container-inner">
-        <Link to="/admin/games" className="link">
+        <Link href="/admin/games" className="link">
           <div
             className={
-              pathname?.pathname.includes("game")
+              pathname?.includes("game")
                 ? "admin_nav-flex-container admin_nav-active"
                 : "admin_nav-flex-container"
             }
           >
             <div
               className={
-                pathname?.pathname.includes("game")
+                pathname?.includes("game")
                   ? "admin_nav-flex admin_nav-flex-active"
                   : "admin_nav-flex"
               }
             >
               <svg
                className={
-                pathname?.pathname.includes("game")
+                pathname?.includes("game")
                   ? "admin_nav-svg admin_nav-svg-active"
                   : "admin_nav-svg"
               }
@@ -59,24 +59,24 @@ const Sidebar = () => {
           </div>
         </Link>
 
-        <Link to="/admin/events" className="link">
+        <Link href="/admin/events" className="link">
           <div
             className={
-              pathname?.pathname.includes("event")
+              pathname?.includes("event")
                 ? "admin_nav-flex-container admin_nav-active"
                 : "admin_nav-flex-container"
             }
           >
             <div
               className={
-                pathname?.pathname.includes("event")
+                pathname?.includes("event")
                   ? "admin_nav-flex admin_nav-flex-active"
                   : "admin_nav-flex"
               }
             >
 
 <svg  className={
-                  pathname?.pathname.includes("event")
+                  pathname?.includes("event")
                     ? "admin_nav-svg admin_nav-svg-active"
                     : "admin_nav-svg"
                 } width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

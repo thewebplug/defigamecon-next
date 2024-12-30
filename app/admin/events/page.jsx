@@ -1,3 +1,4 @@
+"use client"
 import {
     Table,
     TableBody,
@@ -6,20 +7,19 @@ import {
     TableRow,
     TableCell,
   } from "@mui/material";
-  import { Link } from "react-router-dom";
+  import Link from "next/link";
 import Sidebar from "../../components/admin/Sidebar";
 import { useEffect } from "react";
-// import { deletePoem, getAllPoems } from "../@/app/apis";
+// import { deletePoem, getAllPoems } from "@/app/apis";
 import { useState } from "react";  
 import { useSelector } from "react-redux";
-import { deleteEvent, getAllEvents } from "../@/app/apis";
+import { deleteEvent, getAllEvents } from "@/app/apis";
 
 
 
   const AdminEvents = () => {
     const auth = useSelector((state) => state.auth);
 
-    const router = useRouter();
 
     const [events, setEvents] = useState([])
 
@@ -52,7 +52,7 @@ import { deleteEvent, getAllEvents } from "../@/app/apis";
         <Sidebar />
         <div className="main">
           <div className="title">Events</div>
-          <Link to="/admin/create-event">
+          <Link href="/admin/create-event">
         <button className="register">
           <svg
             viewBox="0 0 24 24"

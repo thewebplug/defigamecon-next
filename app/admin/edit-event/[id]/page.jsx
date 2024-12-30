@@ -1,19 +1,19 @@
-import { Select, MenuItem, Badge } from "@mui/material";
+"use client"
+import {  Badge } from "@mui/material";
 import React, { useEffect, useState } from "react";
-import Resizer from "react-image-file-resizer";
 import axios from "axios";
 import { useSelector } from "react-redux";
 import { useRef } from "react";
-import { useParams } from "react-router-dom";
-import Sidebar from "../../components/admin/Sidebar";
+import Sidebar from "@/app/components/admin/Sidebar";
 import { useForm } from "react-hook-form";
-import { createEvent } from "../@/app/apis";
-import { useRouter } from "next/navigation";
+import { getEvent, updateEvent } from "@/app/apis";
+import { useParams, useRouter } from "next/navigation";
+import Link from "next/link";
 
-const CreateEvent = () => {
+const EditEvent = () => {
   const auth = useSelector((state) => state.auth);
+  const {id} = useParams();
   const router = useRouter();
-  const pathname = useParams();
   const {
     handleSubmit,
     register,
@@ -151,11 +151,6 @@ const CreateEvent = () => {
     }
   };
 
-  const handleRemoveCategory = (cat) => {
-   
-      setSelectedCategories((prev) => prev.filter((item) => item !== cat));
-  };
-
   const onSubmit = async (data) => {
     if (images?.length < 1) {
       alert("Please include images of the past edition of this event");
@@ -172,7 +167,8 @@ const CreateEvent = () => {
     }
     setLoading(true);
 
-    const response = await createEvent(
+    const response = await updateEvent(
+      id, 
       {
         ...data,
         banner,
@@ -206,6 +202,22 @@ const CreateEvent = () => {
     }
   };
 
+  
+    const handleGetEvent = async () => {
+      const response = await getEvent(id);
+      console.log('getEvent', response);
+      
+      reset(response?.data);
+      setImages(response?.data?.images)
+      setVideos(response?.data?.videos)
+      setBanner(response?.data?.banner)
+      setSelectedCategories(response?.data?.categories)
+    } 
+  
+    useEffect(() => {
+      handleGetEvent();
+    }, [])
+
   return (
     <div className="admin-form">
       <Sidebar />
@@ -217,7 +229,6 @@ const CreateEvent = () => {
           viewBox="0 0 1024 1024"
           xmlns="http://www.w3.org/2000/svg"
           fill="#000000"
-          
         >
           <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
           <g
@@ -237,8 +248,7 @@ const CreateEvent = () => {
           </g>
         </svg>
         </Link>
-       
-        <h1 className="admin-form__main__title">Create event</h1>
+        <h1 className="admin-form__main__title">Edit event</h1>
         <form
           onSubmit={handleSubmit(onSubmit)}
           className="admin-form__main__form"
@@ -274,16 +284,11 @@ const CreateEvent = () => {
               </select>
               <div className="admin-form__main__form__flex__selected-items">
               {selectedCategories?.map((item, index) => (
-                <div key={index}>{item} <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
-                onClick={() => handleRemoveCategory(item)}
-                >
-                <path d="M12 22.75C6.07 22.75 1.25 17.93 1.25 12C1.25 6.07 6.07 1.25 12 1.25C17.93 1.25 22.75 6.07 22.75 12C22.75 17.93 17.93 22.75 12 22.75ZM12 2.75C6.9 2.75 2.75 6.9 2.75 12C2.75 17.1 6.9 21.25 12 21.25C17.1 21.25 21.25 17.1 21.25 12C21.25 6.9 17.1 2.75 12 2.75Z" fill="#292D32"/>
-                <path d="M9.17011 15.5804C8.98011 15.5804 8.79011 15.5104 8.64011 15.3604C8.35011 15.0704 8.35011 14.5904 8.64011 14.3004L14.3001 8.64035C14.5901 8.35035 15.0701 8.35035 15.3601 8.64035C15.6501 8.93035 15.6501 9.41035 15.3601 9.70035L9.70011 15.3604C9.56011 15.5104 9.36011 15.5804 9.17011 15.5804Z" fill="#292D32"/>
-                <path d="M14.8301 15.5804C14.6401 15.5804 14.4501 15.5104 14.3001 15.3604L8.64011 9.70035C8.35011 9.41035 8.35011 8.93035 8.64011 8.64035C8.93011 8.35035 9.41011 8.35035 9.70011 8.64035L15.3601 14.3004C15.6501 14.5904 15.6501 15.0704 15.3601 15.3604C15.2101 15.5104 15.0201 15.5804 14.8301 15.5804Z" fill="#292D32"/>
-                </svg>
-                </div>
+                <div key={index} >{item}</div>
               ))}
               </div>
+
+             
             </div>
 
             <div>
@@ -493,7 +498,7 @@ const CreateEvent = () => {
               ))}
           </div>
           <label className="admin-form__main__form__drop-area-container">
-            {!videoLoading && videos?.length < 3 ?  (
+            {!videoLoading && (
               <input
                 type="file"
                 multiple
@@ -510,7 +515,7 @@ const CreateEvent = () => {
                 }
                 ref={mediaRef}
               />
-            ) : ""}
+            )}
             <div className="admin-form__main__form__drop-area-container__drop-area">
               <div className="admin-form__main__form__drop-area-container__drop-area__area">
                 {videoLoading ? (
@@ -528,7 +533,7 @@ const CreateEvent = () => {
             type="submit"
             disabled={loading || imageLoading || videoLoading || bannerLoading}
           >
-            {loading ? "Loading..." : "Create event"}
+            {loading ? "Loading..." : "Edit event"}
           </button>
         </form>
       </div>
@@ -536,4 +541,4 @@ const CreateEvent = () => {
   );
 };
 
-export default CreateEvent;
+export default EditEvent;

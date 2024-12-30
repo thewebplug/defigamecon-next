@@ -1,3 +1,4 @@
+"use client"
 import {
     Table,
     TableBody,
@@ -6,12 +7,12 @@ import {
     TableRow,
     TableCell,
   } from "@mui/material";
-  import { Link } from "react-router-dom";
+  import Link from "next/link";
 import Sidebar from "../../components/admin/Sidebar";
 import { useEffect } from "react";
 import { useState } from "react";  
 import { useSelector } from "react-redux";
-import { deleteGame, getAllGames } from "../@/app/apis";
+import { deleteGame, getAllGames } from "@/app/apis";
 import { useRouter } from "next/navigation";
 
 
@@ -50,7 +51,7 @@ import { useRouter } from "next/navigation";
         <Sidebar />
         <div className="main">
           <div className="title">Games</div>
-          <Link to="/admin/create-game">
+          <Link href="/admin/create-game">
         <button className="register">
           <svg
             viewBox="0 0 24 24"
