@@ -1,8 +1,12 @@
 "use client"
-import { useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import Header from "../components/header";
+import Explore from "../components/explore";
+import Footer from "../components/footer";
 import EventCard from "../components/eventCard";
+import { getAllEvents } from "@/app/apis";
+import { Suspense, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+import { useSearchParams } from "next/navigation";
 
 function SearchResults({ auth }) {
   const [events, setEvents] = useState([]);
