@@ -158,9 +158,7 @@ export default function Home() {
 
   return (
 
-      <div>
-    <div data-scroll-section>
-      <div>
+      <>
         <main>
           <div className="nft-main">
             <Image className="nft-main__img" src={Image8} alt="" objectFit="cover" layout="fill" />
@@ -1562,10 +1560,8 @@ export default function Home() {
 
       <Footer />
     
-              </div>
+              </>
 
-    </div>
     
-    </div>
   );
 }
