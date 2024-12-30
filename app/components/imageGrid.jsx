@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import OptimizedImage from "./optimizedImage";
 
 
 
@@ -17,13 +18,20 @@ export default function ImageGrid({images}) {
         <div className="event__grid">
           <div className="event__grid__preview">
             {images?.map((image, index) => 
-            <img className={image?.public_id === selectedImage?.public_id ? "event__grid__preview__active" : ""} src={image?.url} alt=""
+            <div className={image?.public_id === selectedImage?.public_id ? "event__grid__preview__active event__grid__preview__image" : "event__grid__preview__image"}>
+               <OptimizedImage  src={image?.url} alt=""
             onClick={() => setSelectedImage(image)}
             key={index}
             />
+            </div>
+           
             )}
           </div>
-          <img className="event__grid__view" src={selectedImage?.url} alt="" />
+
+          <div className="event__grid__view">
+          <OptimizedImage  src={selectedImage?.url} alt="" />
+          </div>
+         
         </div>
     )
 }

@@ -13,7 +13,6 @@ export default function Events() {
 
   const handleGetEvents = async () => {
     const response = await getAllEvents(auth?.token);
-    console.log("getAllEvents", response);
     if(response?.status === 200) {
       setEvents(response?.data);
     }

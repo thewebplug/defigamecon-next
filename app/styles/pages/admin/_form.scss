@@ -120,11 +120,12 @@
             
         
             &__media{
+              position: relative;
               width: 9.3rem;
               height: 9.3rem;
               border-radius: 50%;
               margin-left: 20px;
-              object-fit: cover;
+              overflow: hidden;
             }
           }
 

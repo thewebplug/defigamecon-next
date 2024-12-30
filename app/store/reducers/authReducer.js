@@ -14,7 +14,6 @@ const tokenDecode = (token) => {
   if (new Date() > expTime) {
     return null
   }
-  console.log('tokenDecoded', tokenDecoded);
   return tokenDecoded
 }
 

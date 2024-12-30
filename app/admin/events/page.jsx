@@ -25,7 +25,6 @@ import { deleteEvent, getAllEvents } from "@/app/apis";
 
     const handleGetEvents = async () => {
         const response = await getAllEvents(auth?.token);
-        console.log('getAllEvents', response);
         if(response?.status === 200) {
           setEvents(response?.data);
         }
@@ -101,7 +100,7 @@ import { deleteEvent, getAllEvents } from "@/app/apis";
                   <TableCell className="table_row">{item?.categories?.map(category => `${category}, `)}</TableCell>
                  <TableCell className="table_row active"><Link 
                  href={`/admin/edit-event/${item?._id}`}
-                 >Update Event</Link></TableCell>
+                 >Update event</Link></TableCell>
                  <TableCell className="table_row active"><a 
                  onClick={() => handleEventDelete(item?._id)}
                  >Delete Event</a></TableCell>

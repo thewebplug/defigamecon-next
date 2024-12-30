@@ -1,7 +1,6 @@
 "use client"
 import { Badge } from "@mui/material";
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import { useSelector } from "react-redux";
 import { useRef } from "react";
 import Sidebar from "@/app/components/admin/Sidebar";
@@ -9,12 +8,14 @@ import { useForm } from "react-hook-form";
 import { getGame, updateGame } from "@/app/apis";
 import { useParams, useRouter } from "next/navigation";
 import Link from "next/link";
+import fileUpload from "@/app/utils/fileUpload";
+import OptimizedImage from "@/app/components/optimizedImage";
 
 const EditGame = () => {
   const auth = useSelector((state) => state.auth);
   const router = useRouter();
   const {id} = useParams();
-  console.log('id', id);
+  // console.log('id', id);
   
   const {
     handleSubmit,
@@ -23,7 +24,6 @@ const EditGame = () => {
     formState: { errors },
   } = useForm();
 
-  console.log("errors form react-hook-form", errors);
 
   const [videoLoading, setVideoLoading] = useState(false);
   const [imageLoading, setImageLoading] = useState(false);
@@ -34,79 +34,7 @@ const EditGame = () => {
 
   
 
-  const fileUpload = (e, dataType, setListItem, setLoading, mediaType) => {
-    if(mediaType === "video"){
-      const maxSize = 15 * 1024 * 1024; // 15MB in bytes
-      if (e.size > maxSize) {
-        setLoading(false);
-        alert('File size must be less than 15MB');
-        return;
-      }
-    }else {
-      const maxSize = 250 * 1024; // 250KB in bytes
-      if (e.size > maxSize) {
-        setLoading(false);
-        alert('File size must be less than 250KB');
-        return;
-      }
-    }
 
-    setLoading(true);
-
-    // let files = e.target.files;
-    // let allUploadedFiles = images;
-
-    const fileToUri = (file, cb) => {
-      const reader = new FileReader();
-      reader.readAsDataURL(file);
-      reader.onload = function () {
-        cb(null, reader.result);
-      };
-      reader.onerror = function (error) {
-        cb(error, null);
-      };
-    };
-
-    if (e) {
-      // for (let i = 0; i < files.length; i++) {
-      fileToUri(e, (err, result) => {
-        if (result) {
-          axios
-            .post(
-              // `${process.env.REACT_APP_DEV_URL}/files/upload`,
-              `${process.env.NEXT_PUBLIC_URL}/files/upload`,
-              {
-                image: result,
-              },
-              {
-                headers: {
-                  Authorization: `Bearer ${auth ? auth.token : ""}`,
-                },
-              }
-            )
-            .then((response) => {
-              if (dataType === "string") {
-                setListItem(response?.data);
-              } else {
-                setListItem((prev) => [...prev, response?.data]);
-              }
-              // setPoemMedia(response?.data);
-              setLoading(false);
-            })
-            .catch((error) => {
-              setLoading(false);
-              console.log("ERROR", error);
-              if (error?.response?.data?.message) {
-                alert(error?.response?.data?.message);
-              } else {
-                alert(error?.response?.statusText);
-              }
-            });
-        }
-      });
-      // }
-    }
-  };
 
   const handleMediaAssetRemove = (id, setListItem, dataType) => {
     if(dataType === "string"){
@@ -135,7 +63,6 @@ const EditGame = () => {
       auth?.token
     );
 
-    console.log("response", response);
 
     if (response?.status === 200) {
       alert(response?.data?.message);
@@ -149,6 +76,8 @@ const EditGame = () => {
 
   const handleGetGame = async () => {
     const response = await getGame(id);
+    console.log('response', response);
+    
     reset(response?.data);
     setImage(response?.data?.image)
     setVideos(response?.data?.videos)
@@ -249,7 +178,7 @@ const EditGame = () => {
           <label className="admin-form__main__form__upload-label">Image(maximum size allowed: 250kb)</label>
 
                   <div className="admin-form__main__form__uploaded">
-                      {!!image &&
+                      {!!image?.url &&
                           <Badge
                             overlap="circular"
                             onClick={() => handleMediaAssetRemove(image?.public_id, setImage, "string")}
@@ -269,7 +198,12 @@ const EditGame = () => {
                               </svg>
                             }
                           >
-                            <img className="admin-form__main__form__uploaded__media" src={image?.url} />
+                           <div className="admin-form__main__form__uploaded__media"><OptimizedImage
+                                             
+                                             src={image?.url}
+                                             objectFit="cover"
+                                  layout="fill"
+                                           /></div>
                           </Badge>
                       }
                     </div>
@@ -286,7 +220,8 @@ const EditGame = () => {
                    "string",
                    setImage,
                    setImageLoading,
-                   "image"
+                   "image",
+                   auth
                  )
                }
                ref={mediaRef}
@@ -349,7 +284,8 @@ const EditGame = () => {
                     "array",
                     setVideos,
                     setVideoLoading,
-                    "video"
+                    "video",
+                    auth
                   )
                 }
                 ref={mediaRef}

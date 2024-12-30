@@ -25,7 +25,6 @@ import { useRouter } from "next/navigation";
 
     const handleGetGames = async () => {
         const response = await getAllGames(auth?.token);
-        console.log('getAllGames', response);
         if(response?.status === 200) {
           setGames(response?.data);
         }
@@ -99,7 +98,7 @@ import { useRouter } from "next/navigation";
                   <TableCell className="table_row">{item?.category}</TableCell>
                  <TableCell className="table_row active"><Link 
                  href={`/admin/edit-game/${item?._id}`}
-                 >Update Event</Link></TableCell>
+                 >Update game</Link></TableCell>
                  <TableCell className="table_row active"><a 
                  onClick={() => handleGameDelete(item?._id)}
                  >Delete Game</a></TableCell>

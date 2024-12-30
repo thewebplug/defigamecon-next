@@ -16,7 +16,6 @@ function SearchResults({ auth }) {
 
   const handleGetEvents = async () => {
     const response = await getAllEvents(auth?.token);
-    console.log("getAllEvents", response?.data[0]?.title, event);
     if(response?.status === 200) {
       setEvents(response?.data?.filter((item) => 
         item?.title?.toLowerCase()?.includes(event) || 

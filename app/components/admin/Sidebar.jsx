@@ -7,7 +7,6 @@ import { useDispatch } from "react-redux";
 
 const Sidebar = () => {
   const pathname = usePathname();
-  console.log('pathname', pathname);
   
   const dispatch = useDispatch();
   const router = useRouter();

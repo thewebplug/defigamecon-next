@@ -3,7 +3,7 @@ import Image2 from "@/public/assets/gunzilla.png";
 import Image8 from "@/public/assets/Rectangle 60.png";
 import Image9 from "@/public/assets/NFT 2.png";
 import Image12 from "@/public/assets/9999.png";
-import Image13 from "@/public/assets/7878.png";
+import Image13 from "@/public/assets/7878.webp";
 import { useLayoutEffect, useState } from "react";
 import { useEffect } from "react";
 import Header from "@/app/components/header";
@@ -18,6 +18,7 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { getAllEvents, getAllGames } from "./apis";
+import OptimizedImage from "./components/optimizedImage";
 
 
 export default function Home() {
@@ -32,7 +33,7 @@ export default function Home() {
 
   const handleGetEvents = async () => {
     const response = await getAllEvents(auth?.token);
-    console.log("getAllEvents", response);
+    // console.log("getAllEvents", response);
     if(response?.status === 200) {
       setEvents(response?.data);
     }
@@ -40,7 +41,7 @@ export default function Home() {
 
   const handleGetGames = async () => {
     const response = await getAllGames(auth?.token);
-    console.log('getAllGames', response);
+    // console.log('getAllGames', response);
     if(response?.status === 200) {
       setGames(response?.data);
     }
@@ -60,7 +61,7 @@ export default function Home() {
       ".auction__slide__slide-inner__card"
     );
 
-    console.log('listhere', list, list?.length);
+    // console.log('listhere', list, list?.length);
     
     const middleIndex = Math.floor(list.length / 2);
 
@@ -88,7 +89,7 @@ export default function Home() {
     );
 
     const slide = document.querySelector(".auction__slide__slide-inner");
-    console.log("slide after", slide);
+    // console.log("slide after", slide);
   }
 
   useEffect(() => {
@@ -103,12 +104,12 @@ export default function Home() {
     );
     const array = Array.from(list);
 
-    console.log("array", array);
+    // console.log("array", array);
     const lastItem = array.pop();
     array.unshift(lastItem);
 
     const slide = document.querySelector(".auction__slide__slide-inner");
-    console.log("slide", slide);
+    // console.log("slide", slide);
     slide.innerHTML = "";
 
     array.forEach((item) => {
@@ -125,13 +126,13 @@ export default function Home() {
     );
     const array = Array.from(list);
 
-    console.log("array", array);
+    // console.log("array", array);
     const firstItem = array.shift();
-    console.log("firstItem", firstItem);
+    // console.log("firstItem", firstItem);
     array.push(firstItem);
 
     const slide = document.querySelector(".auction__slide__slide-inner");
-    console.log("slide", slide);
+    // console.log("slide", slide);
     slide.innerHTML = "";
 
     array.forEach((item) => {
@@ -142,19 +143,6 @@ export default function Home() {
       assignPositions();
     }, 0);
   };
-
-  useLayoutEffect(() => {
-    const cardId = hash?.substring(1); // Remove the "#" symbol from the hash
-    console.log("hash", hash);
-    console.log("cardId", cardId);
-
-    const cardElement = document.getElementById(cardId);
-    if (cardElement) {
-      setActive(false)
-      console.log("cardElement", cardElement);
-      cardElement.scrollIntoView({ behavior: "smooth" });
-    }
-  }, [hash]);
 
   return (
 
@@ -1339,138 +1327,12 @@ export default function Home() {
               <div className="auction__slide__slide-inner">
                 
                 
+              
+                
                 {games?.map((game) => 
                   <div className="auction__slide__slide-inner__card" key={game?._id}>
                   <div className="auction__slide__slide-inner__card__image">
-                  <Image src={game?.image?.url} alt="" objectFit="cover" layout="fill" />
-                    </div>
-                  
-                  <div className="auction__slide__slide-inner__card__title-flex">
-                    <div>
-                      <div>{game?.title}</div>
-                      <div>
-                        <Image src={Image2} alt="" />
-                        By {game?.creator}
-                      </div>
-                    </div>
-                    <button>
-                    <span>Available</span>
-                    </button>
-                  </div>
-                  {/* <div className="auction__slide__slide-inner__card__title-flex2">
-                    <div>
-                      Highest bid: <span>1.2 ETH</span>
-                    </div>
-                    <div>3 In pack</div>
-                  </div> */}
-                  <div className="auction__slide__slide-inner__card__button-group">
-                    <button onClick={() => window.open(game?.link, '_blank')}>Get game</button>
-                    <button onClick={() => window.open(game?.link, '_blank')}>View</button>
-                  </div>
-                </div>
-
-                )
-                }
-                {games?.map((game) => 
-                  <div className="auction__slide__slide-inner__card" key={game?._id}>
-                  <div className="auction__slide__slide-inner__card__image">
-                  <Image src={game?.image?.url} alt="" objectFit="cover" layout="fill" />
-                    </div>
-                  
-                  <div className="auction__slide__slide-inner__card__title-flex">
-                    <div>
-                      <div>{game?.title}</div>
-                      <div>
-                        <Image src={Image2} alt="" />
-                        By {game?.creator}
-                      </div>
-                    </div>
-                    <button>
-                    <span>Available</span>
-                    </button>
-                  </div>
-                  {/* <div className="auction__slide__slide-inner__card__title-flex2">
-                    <div>
-                      Highest bid: <span>1.2 ETH</span>
-                    </div>
-                    <div>3 In pack</div>
-                  </div> */}
-                  <div className="auction__slide__slide-inner__card__button-group">
-                    <button onClick={() => window.open(game?.link, '_blank')}>Get game</button>
-                    <button onClick={() => window.open(game?.link, '_blank')}>View</button>
-                  </div>
-                </div>
-
-                )
-                }
-                {games?.map((game) => 
-                  <div className="auction__slide__slide-inner__card" key={game?._id}>
-                  <div className="auction__slide__slide-inner__card__image">
-                  <Image src={game?.image?.url} alt="" objectFit="cover" layout="fill" />
-                    </div>
-                  
-                  <div className="auction__slide__slide-inner__card__title-flex">
-                    <div>
-                      <div>{game?.title}</div>
-                      <div>
-                        <Image src={Image2} alt="" />
-                        By {game?.creator}
-                      </div>
-                    </div>
-                    <button>
-                    <span>Available</span>
-                    </button>
-                  </div>
-                  {/* <div className="auction__slide__slide-inner__card__title-flex2">
-                    <div>
-                      Highest bid: <span>1.2 ETH</span>
-                    </div>
-                    <div>3 In pack</div>
-                  </div> */}
-                  <div className="auction__slide__slide-inner__card__button-group">
-                    <button onClick={() => window.open(game?.link, '_blank')}>Get game</button>
-                    <button onClick={() => window.open(game?.link, '_blank')}>View</button>
-                  </div>
-                </div>
-
-                )
-                }
-                {games?.map((game) => 
-                  <div className="auction__slide__slide-inner__card" key={game?._id}>
-                  <div className="auction__slide__slide-inner__card__image">
-                  <Image src={game?.image?.url} alt="" objectFit="cover" layout="fill" />
-                    </div>
-                  
-                  <div className="auction__slide__slide-inner__card__title-flex">
-                    <div>
-                      <div>{game?.title}</div>
-                      <div>
-                        <Image src={Image2} alt="" />
-                        By {game?.creator}
-                      </div>
-                    </div>
-                    <button>
-                    <span>Available</span>
-                    </button>
-                  </div>
-                  {/* <div className="auction__slide__slide-inner__card__title-flex2">
-                    <div>
-                      Highest bid: <span>1.2 ETH</span>
-                    </div>
-                    <div>3 In pack</div>
-                  </div> */}
-                  <div className="auction__slide__slide-inner__card__button-group">
-                    <button onClick={() => window.open(game?.link, '_blank')}>Get game</button>
-                    <button onClick={() => window.open(game?.link, '_blank')}>View</button>
-                  </div>
-                </div>
-
-                )
-                }
-                {games?.map((game) => 
-                  <div className="auction__slide__slide-inner__card" key={game?._id}>
-                  <div className="auction__slide__slide-inner__card__image">
-                  <Image src={game?.image?.url} alt="" objectFit="cover" layout="fill" />
+                  <OptimizedImage src={game?.image?.url} alt="" objectFit="cover" layout="fill" />
                     </div>
                   
                   <div className="auction__slide__slide-inner__card__title-flex">
@@ -1500,6 +1362,41 @@ export default function Home() {
                 )
                 }
                 
+                {games?.map((game) => 
+                  <div className="auction__slide__slide-inner__card" key={game?._id}>
+                  <div className="auction__slide__slide-inner__card__image">
+                  <OptimizedImage src={game?.image?.url} alt="" objectFit="cover" layout="fill" />
+                    </div>
+                  
+                  <div className="auction__slide__slide-inner__card__title-flex">
+                    <div>
+                      <div>{game?.title}</div>
+                      <div>
+                        <Image src={Image2} alt="" />
+                        By {game?.creator}
+                      </div>
+                    </div>
+                    <button>
+                    <span>Available</span>
+                    </button>
+                  </div>
+                  {/* <div className="auction__slide__slide-inner__card__title-flex2">
+                    <div>
+                      Highest bid: <span>1.2 ETH</span>
+                    </div>
+                    <div>3 In pack</div>
+                  </div> */}
+                  <div className="auction__slide__slide-inner__card__button-group">
+                    <button onClick={() => window.open(game?.link, '_blank')}>Get game</button>
+                    <button onClick={() => window.open(game?.link, '_blank')}>View</button>
+                  </div>
+                </div>
+
+                )
+                }
+                
+               
+               
                 
               </div>
               <svg

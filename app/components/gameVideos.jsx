@@ -2,6 +2,8 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { getAllGames } from "@/app/apis";
+import OptimizedImage from "./optimizedImage";
+import OptimizedVideo from "./optimizedVideo";
 
 export default function GameVideos() {
   const auth = useSelector((state) => state.auth);
@@ -11,7 +13,6 @@ export default function GameVideos() {
 
   const handleGetGames = async () => {
     const response = await getAllGames(auth?.token);
-    console.log("getAllGames", response);
     if (response?.status === 200) {
       const temp = response?.data.flatMap((item) =>
         item.videos.map((video) => ({
@@ -22,7 +23,6 @@ export default function GameVideos() {
         }))
       );
       setVideos(temp);
-      console.log("tempoooo", temp);
     }
   };
 
@@ -48,40 +48,20 @@ export default function GameVideos() {
     <div className="game-video">
       <div className="game-video__preview">
         {videos?.map((video, index) => (
-          <img
-            src={video?.image?.url}
-            key={index}
-            alt=""
-            className={
-              video?.image?.public_id === selectedVideo?.image?.public_id ?
-              "game-video__preview__active" : ""
-            }
-            onClick={() => setSelectedVideo(video)}
-          />
-        ))}
-        {videos?.map((video, index) => (
-          <img
-            src={video?.image?.url}
-            key={index}
-            alt=""
-            className={
-              video?.image?.public_id === selectedVideo?.image?.public_id ?
-              "game-video__preview__active" : ""
-            }
-            onClick={() => setSelectedVideo(video)}
-          />
-        ))}
-        {videos?.map((video, index) => (
-          <img
-            src={video?.image?.url}
-            key={index}
-            alt=""
-            className={
-              video?.image?.public_id === selectedVideo?.image?.public_id ?
-              "game-video__preview__active" : ""
-            }
-            onClick={() => setSelectedVideo(video)}
-          />
+          <div className={
+            video?.image?.public_id === selectedVideo?.image?.public_id
+              ? "game-video__preview__active game-video__preview__image"
+              : "game-video__preview__image"
+          } key={index}>
+            <OptimizedImage
+              src={video?.image?.url}
+              alt=""
+              
+              onClick={() => setSelectedVideo(video)}
+              objectFit="cover"
+              layout="fill"
+            />
+          </div>
         ))}
       </div>
       <div className="game-video__inner">
@@ -96,20 +76,19 @@ export default function GameVideos() {
             </a>
           )}
         </div>
-        <video
+        <OptimizedVideo
           id="video"
           className="poetry-video"
-          // autoplay
-          loop
-          muted
-          playsInline
+          poster={selectedVideo?.image?.url}
           src={selectedVideo?.video?.url}
-        ></video>
+        />
         <div className="game-video__inner__previews">
           {videos?.map((video, index) => (
             <div onMouseOver={() => setSelectedVideo(video)} key={index}>
               {/* <div className="game-video__inner__previews__title">{video?.title}</div> */}
-              <img src={video?.image?.url} alt="" />
+              <div className="game-video__inner__previews__image">
+                <OptimizedImage src={video?.image?.url} alt="" objectFit="cover" layout="fill" />
+              </div>
               <svg
                 viewBox="-0.5 0 7 7"
                 version="1.1"

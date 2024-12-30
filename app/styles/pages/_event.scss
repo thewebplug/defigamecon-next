@@ -200,7 +200,9 @@
                 display: none;
             }
 
-            & > img {
+            &__image {
+                position: relative;
+                overflow: hidden;
                 width: 100%;
                 height: 50px;
                 object-fit: cover;
@@ -225,6 +227,7 @@
       
 
             &__view {
+                position: relative;
                 height: 420px;
                 width: 100%;
                 object-fit: cover;

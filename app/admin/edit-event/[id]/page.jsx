@@ -1,7 +1,6 @@
 "use client"
 import {  Badge } from "@mui/material";
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import { useSelector } from "react-redux";
 import { useRef } from "react";
 import Sidebar from "@/app/components/admin/Sidebar";
@@ -9,6 +8,8 @@ import { useForm } from "react-hook-form";
 import { getEvent, updateEvent } from "@/app/apis";
 import { useParams, useRouter } from "next/navigation";
 import Link from "next/link";
+import fileUpload from "@/app/utils/fileUpload";
+import OptimizedImage from "@/app/components/optimizedImage";
 
 const EditEvent = () => {
   const auth = useSelector((state) => state.auth);
@@ -21,7 +22,6 @@ const EditEvent = () => {
     formState: { errors },
   } = useForm();
 
-  console.log("errors form react-hook-form", errors);
 
   const [videoLoading, setVideoLoading] = useState(false);
   const [imageLoading, setImageLoading] = useState(false);
@@ -69,80 +69,6 @@ const EditEvent = () => {
   //   }
   // }, []);
 
-  const fileUpload = (e, dataType, setListItem, setLoading, mediaType) => {
-    if(mediaType === "video"){
-      const maxSize = 15 * 1024 * 1024; // 15MB in bytes
-      if (e.size > maxSize) {
-        setLoading(false);
-        alert('File size must be less than 15MB');
-        return;
-      }
-    }else {
-      const maxSize = 250 * 1024; // 250KB in bytes
-      if (e.size > maxSize) {
-        setLoading(false);
-        alert('File size must be less than 250KB');
-        return;
-      }
-    }
-
-    setLoading(true);
-
-    // let files = e.target.files;
-    // let allUploadedFiles = images;
-
-    const fileToUri = (file, cb) => {
-      const reader = new FileReader();
-      reader.readAsDataURL(file);
-      reader.onload = function () {
-        cb(null, reader.result);
-      };
-      reader.onerror = function (error) {
-        cb(error, null);
-      };
-    };
-
-    if (e) {
-      // for (let i = 0; i < files.length; i++) {
-      fileToUri(e, (err, result) => {
-        if (result) {
-          axios
-            .post(
-              // `${process.env.REACT_APP_DEV_URL}/files/upload`,
-              `${process.env.REACT_APP_PROD_URL}/files/upload`,
-              {
-                image: result,
-              },
-              {
-                headers: {
-                  Authorization: `Bearer ${auth ? auth.token : ""}`,
-                },
-              }
-            )
-            .then((response) => {
-              if (dataType === "string") {
-                setListItem(response?.data);
-              } else {
-                setListItem((prev) => [...prev, response?.data]);
-              }
-              // setPoemMedia(response?.data);
-              setLoading(false);
-            })
-            .catch((error) => {
-              setLoading(false);
-              console.log("ERROR", error);
-              if (error?.response?.data?.message) {
-                alert(error?.response?.data?.message);
-              } else {
-                alert(error?.response?.statusText);
-              }
-            });
-        }
-      });
-      // }
-    }
-  };
-
   const handleMediaAssetRemove = (id, setListItem, dataType) => {
     if(dataType === "string"){
       setListItem(null);
@@ -179,7 +105,7 @@ const EditEvent = () => {
       auth?.token
     );
 
-    console.log("response", response);
+    // console.log("response", response);
 
     if (response?.status === 200) {
       alert(response?.data?.message);
@@ -192,10 +118,10 @@ const EditEvent = () => {
   };
 
   const handleAddToArray = (value) => {
-    console.log("deyyahe", category);
+    // console.log("deyyahe", category);
 
     const temp = selectedCategories?.filter((item) => item === value);
-    console.log("temp", temp);
+    // console.log("temp", temp);
     if (!temp?.length > 0) {
       setSelectedCategories([...selectedCategories, value]);
       setCategory("");
@@ -205,7 +131,7 @@ const EditEvent = () => {
   
     const handleGetEvent = async () => {
       const response = await getEvent(id);
-      console.log('getEvent', response);
+      // console.log('getEvent', response);
       
       reset(response?.data);
       setImages(response?.data?.images)
@@ -348,7 +274,7 @@ const EditEvent = () => {
           <label className="admin-form__main__form__upload-label">Event banner(maximum size allowed: 250kb)</label>
 
           <div className="admin-form__main__form__uploaded">
-            {!!banner && (
+            {!!banner?.url && (
               <Badge
                 overlap="circular"
                 onClick={() => handleMediaAssetRemove(banner?.public_id, setBanner, "string")}
@@ -368,7 +294,12 @@ const EditEvent = () => {
                   </svg>
                 }
               >
-                <img className="admin-form__main__form__uploaded__media" src={banner?.url} />
+                <div className="admin-form__main__form__uploaded__media"><OptimizedImage
+                                  
+                                  src={banner?.url}
+                                  objectFit="cover"
+                                  layout="fill"
+                                /></div>
               </Badge>
             )}
           </div>
@@ -385,7 +316,8 @@ const EditEvent = () => {
                     "string",
                     setBanner,
                     setBannerLoading,
-                    "image"
+                    "image",
+                    auth
                   )
                 }
                 ref={mediaRef}
@@ -409,7 +341,7 @@ const EditEvent = () => {
 
           <div className="admin-form__main__form__uploaded">
             {!!images &&
-              images?.map((image, index) => (
+              images?.map((image, index) => ( !!image?.url &&
                 <Badge
                 key={index}
                   overlap="circular"
@@ -430,7 +362,12 @@ const EditEvent = () => {
                     </svg>
                   }
                 >
-                  <img className="admin-form__main__form__uploaded__media" src={image?.url} />
+                  <div className="admin-form__main__form__uploaded__media"><OptimizedImage
+                                    
+                                    src={image?.url}
+                                    objectFit="cover"
+                                  layout="fill"
+                                  /></div>
                 </Badge>
               ))}
           </div>
@@ -447,7 +384,8 @@ const EditEvent = () => {
                     "array",
                     setImages,
                     setImageLoading,
-                    "image"
+                    "image",
+                    auth
                   )
                 }
                 ref={mediaRef}
@@ -510,7 +448,8 @@ const EditEvent = () => {
                     "array",
                     setVideos,
                     setVideoLoading,
-                    "video"
+                    "video",
+                    auth
                   )
                 }
                 ref={mediaRef}

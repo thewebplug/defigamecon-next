@@ -16,7 +16,6 @@ export default function Event() {
 
   const handleGetEvent = async () => {
     const response = await getEvent(id);
-    console.log("getEvent", response);
     setEvent(response?.data);
   };
 
