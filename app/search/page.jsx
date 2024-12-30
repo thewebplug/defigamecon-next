@@ -2,6 +2,7 @@
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import EventCard from "../components/eventCard";
+import { useSelector } from "react-redux";
 
 function SearchResults({ auth }) {
   const [events, setEvents] = useState([]);
