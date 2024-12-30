@@ -1,3 +1,4 @@
+"use client"
 // import Header from "../components/header";
 import Explore from "../components/explore";
 // import Footer from "../components/footer";
