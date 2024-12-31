@@ -1,9 +1,6 @@
 // Maybe use people's tweets?
 import { useEffect, useState } from "react";
 import Image9 from "@/public/assets/Rectangle 41.png";
-import Image1 from "@/public/assets/Rectangle 70.png";
-import Image10 from "@/public/assets/Rectangle 64.png";
-import Image11 from "@/public/assets/Rectangle 640.png";
 import Image from "next/image";
 
 const testimonials = [
@@ -13,17 +10,17 @@ const testimonials = [
     username: "SwatB2k"
   },
   {
-    image: Image1,
+    image: Image9,
     text: "Finally tried OTG once again at the @DefiGameCon. Although It was tough I managed to kill and win a match 🏆. Web3 gaming remains inevitable.",
     username: "SwatB2k"
   },
   {
-    image: Image10,
+    image: Image9,
     text: "Finally tried OTG once again at the @DefiGameCon. Although It was tough I managed to kill and win a match 🏆. Web3 gaming remains inevitable.",
     username: "SwatB2k"
   },
   {
-    image: Image11,
+    image: Image9,
     text: "Finally tried OTG once again at the @DefiGameCon. Although It was tough I managed to kill and win a match 🏆. Web3 gaming remains inevitable.",
     username: "SwatB2k"
   },

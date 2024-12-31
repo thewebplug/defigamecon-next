@@ -1,10 +1,7 @@
 "use client"
 import { useState } from "react";
-import LoginIllustration from "@/public/assets/offthegrid.jpg";
 import { Input,
-    Box,
-    InputLabel,
-    OutlinedInput,
+   
     InputAdornment,
     IconButton,
 } from "@mui/material";
@@ -12,7 +9,6 @@ import { Input,
 import { login } from "../../apis";
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/navigation";
-import Image from "next/image";
 import OptimizedImage from "@/app/components/optimizedImage";
 
 
@@ -59,7 +55,7 @@ const AdminLogin = () => {
     <div className="login">
       <div className="login__card">
         <div className="login__card-background">
-          <OptimizedImage src={LoginIllustration} alt="" />
+          <OptimizedImage src={"https://res.cloudinary.com/thewebplug/image/upload/v1735556202/1735556201783.jpg"} alt="" objectFit="cover" layout="fill" />
         </div>
         <div className="login__card-container">
           <form className="container-login" onSubmit={handleSubmit}>

@@ -20,6 +20,8 @@
       
   
       .login__card-background {
+        position: relative;
+        overflow: hidden;
         background-color: #4a739c;
         border-radius: 12px 0 0 12px;
         display: flex;
