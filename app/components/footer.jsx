@@ -1,4 +1,7 @@
+import Image from "next/image";
 import Link from "next/link";
+import Logo from "@/public/assets/logo.jpg";
+
 
 export default function Footer() {
   const year = new Date().getFullYear();
@@ -6,23 +9,13 @@ export default function Footer() {
     <footer className="footer">
       <div className="footer__inner">
         <div className="footer__inner__grid">
-          <div className="footer__inner__grid__svg">
-            <svg
-              width="36"
-              height="36"
-              viewBox="0 0 36 36"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                fillRule="evenodd"
-                clipRule="evenodd"
-                d="M21 0H15V5.37504L9.25 5.37504V9.25004H5.37501L5.375 15.0001L0 15.0001V21.0001H5.375L5.375 26.75H9.25V30.625H15V36H21V30.625H26.75V26.75H30.625V21.0001H36V15.0001L30.625 15.0001V9.25004H26.75V5.37504L21 5.37504V0Z"
-                fill="white"
-              />
-            </svg>
-            Evebt
+          <Link prefetch={true} className="footer__inner__grid__logo" href="/">
+          <Image src={Logo} alt="" />
+          <div>
+            DEFI <br />
+            GAMECON
           </div>
+        </Link>
 
           <div className="footer__inner__grid__group">
             <Link prefetch={false} href="/#games">

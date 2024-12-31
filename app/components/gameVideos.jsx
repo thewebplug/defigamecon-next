@@ -31,17 +31,32 @@ export default function GameVideos() {
   }, []);
 
   useEffect(() => {
+    if (!selectedVideo?.video?.url) return;
+  
     const video = document.querySelector(".poetry-video");
-
+    if (!video) return;
+  
+    // Reset video state
+    video.pause();
     video.currentTime = 0;
-    const playPromise = video.play();
-    if (playPromise !== undefined) {
-      playPromise
-        .then((_) => {})
-        .catch((error) => {
-          console.log("error", error);
+    
+    // Load the video first
+    video.load();
+  
+    // Play after loading
+    video.addEventListener('loadeddata', () => {
+      const playPromise = video.play();
+      if (playPromise !== undefined) {
+        playPromise.catch((error) => {
+          console.error("Playback error:", error);
         });
-    }
+      }
+    }, { once: true }); // Remove listener after first execution
+  
+    // Cleanup
+    return () => {
+      video.pause();
+    };
   }, [selectedVideo]);
 
   return (
@@ -77,11 +92,12 @@ export default function GameVideos() {
           )}
         </div>
         <OptimizedVideo
-          id="video"
-          className="poetry-video"
-          poster={selectedVideo?.image?.url}
-          src={selectedVideo?.video?.url}
-        />
+  id="video"
+  className="poetry-video"
+  poster={selectedVideo?.image?.url}
+  src={selectedVideo?.video?.url}
+  // onError={(e) => console.error("Video element error:", e)}
+/>
         <div className="game-video__inner__previews">
           {videos?.map((video, index) => (
             <div onMouseOver={() => setSelectedVideo(video)} key={index}>

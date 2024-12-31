@@ -29,11 +29,21 @@
           gap: 40px;
         }
   
-        &__svg {
+        &__logo {
+          font-size: 26px;
           display: flex;
           align-items: center;
-          gap: 20px;
-          font-size: 16px;
+          line-height: 120%;
+          gap: 4px;
+          font-weight: 700;
+          font-family: "Space Grotesk";
+          color: #FFFFFF;
+          cursor: pointer;
+    
+          & > img {
+            width: 60px;
+            height: auto;
+          }
         }
   
         &__group {

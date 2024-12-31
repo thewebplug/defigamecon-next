@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useState } from "react"
+import OptimizedVideo from "./optimizedVideo";
 
 export default function Highlights({videos}) {
 
@@ -41,15 +42,11 @@ useEffect(() => {
               See more
             </a> */}
           </div>
-          <video
-            id="video"
-            className="poetry-video"
-            // autoplay
-            loop
-            muted
-            playsInline
-            src={selectedVideo}
-          ></video>
+          <OptimizedVideo
+                    id="video"
+                    className="poetry-video"
+                    src={selectedVideo}
+                  />
           <div className="highlights__previews">
             {videos?.map((video, index) => (
               <div onMouseOver={() => setSelectedVideo(video?.url)} key={index}>
