@@ -1,26 +1,26 @@
 // Maybe use people's tweets?
 import { useEffect, useState } from "react";
-import Image9 from "@/public/assets/Rectangle 41.png";
 import Image from "next/image";
+import OptimizedImage from "./optimizedImage";
 
 const testimonials = [
   {
-    image: Image9,
+    image: "https://res.cloudinary.com/thewebplug/image/upload/v1735609342/Rectangle_41_blo2rv.png",
     text: "Finally tried OTG once again at the @DefiGameCon. Although It was tough I managed to kill and win a match 🏆. Web3 gaming remains inevitable.",
     username: "SwatB2k"
   },
   {
-    image: Image9,
+    image: "https://res.cloudinary.com/thewebplug/image/upload/v1735609342/Rectangle_41_blo2rv.png",
     text: "Finally tried OTG once again at the @DefiGameCon. Although It was tough I managed to kill and win a match 🏆. Web3 gaming remains inevitable.",
     username: "SwatB2k"
   },
   {
-    image: Image9,
+    image: "https://res.cloudinary.com/thewebplug/image/upload/v1735609342/Rectangle_41_blo2rv.png",
     text: "Finally tried OTG once again at the @DefiGameCon. Although It was tough I managed to kill and win a match 🏆. Web3 gaming remains inevitable.",
     username: "SwatB2k"
   },
   {
-    image: Image9,
+    image: "https://res.cloudinary.com/thewebplug/image/upload/v1735609342/Rectangle_41_blo2rv.png",
     text: "Finally tried OTG once again at the @DefiGameCon. Although It was tough I managed to kill and win a match 🏆. Web3 gaming remains inevitable.",
     username: "SwatB2k"
   },
@@ -56,7 +56,7 @@ export default function Testimonials() {
         <div className="testimonials__slider__card" key={index}>
         <div className="testimonials__slider__card__img">
         <div className="testimonials__slider__card__img__image">
-          <Image src={testimonial?.image} alt="" objectFit="cover" layout="fill" />
+          <OptimizedImage src={testimonial?.image} alt="" objectFit="cover" layout="fill" />
           </div>
           <div className="testimonials__slider__card__img__text">
             <svg
