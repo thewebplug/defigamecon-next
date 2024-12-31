@@ -119,14 +119,16 @@ export default function Header({ active, setActive }) {
             onChange={(e) => setText(e.target.value)}
           />
         </form>
-        <Link prefetch={false} href="/#games">
-              Games
-            </Link>
-            <Link prefetch={false} href="/#upcoming-events">
-              Upcoming events
-            </Link>
-                    <div>Community</div>
-                    <Link prefetch={false} href="/#past-events">Past events</Link>
+        <Link prefetch={false} href="/#games" onClick={() => setActive(false)}>
+          Games
+        </Link>
+        <Link prefetch={false} href="/#upcoming-events" onClick={() => setActive(false)}>
+          Upcoming events
+        </Link>
+        <div>Community</div>
+        <Link prefetch={false} href="/#past-events" onClick={() => setActive(false)}>
+          Past events
+        </Link>
 
         <button className="sidebar__button">Contact us</button>
       </div>
