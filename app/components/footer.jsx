@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 export default function Footer() {
+  const year = new Date().getFullYear();
   return (
     <footer className="footer">
       <div className="footer__inner">
@@ -145,7 +146,7 @@ export default function Footer() {
 
         <div className="footer__inner__divider"></div>
         <div className="footer__inner__rights">
-          Copyright © 2024. All rights reserved
+          Copyright © {year}. All rights reserved
         </div>
       </div>
     </footer>
