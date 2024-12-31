@@ -1,4 +1,4 @@
-import Image2 from "@/public/assets/gunzilla.png";
+import Image2 from "@/public/assets/logo.jpg";
 import OptimizedImage from "./optimizedImage";
 import Image from "next/image";
 import { memo, useCallback } from "react";
@@ -28,7 +28,8 @@ const GameCard = memo(function GameCard({ game }) {
         <div>
           <div>{game?.title}</div>
           <div className="creator">
-            <Image src={Image2} alt="Creator icon" />
+                    <Image src={Image2} alt="" width={24} height={24} style={{borderRadius: "50%"}} />
+            
             By {game?.creator}
           </div>
         </div>

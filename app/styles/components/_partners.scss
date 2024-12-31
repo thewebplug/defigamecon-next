@@ -26,8 +26,9 @@
     }
   
     &__grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr 1fr;
+      display: flex;
+      flex-wrap: wrap;
+      // grid-template-columns: 1fr 1fr 1fr 1fr;
       gap: 32px;
       @media (max-width: $ipadpro) {
         grid-template-columns: 1fr 1fr 1fr;
@@ -39,7 +40,7 @@
       }
   
       &__card {
-        width: 100%;
+        width: fit-content;
         height: 77px;
         border-radius: 30px;
         background: rgba(255, 255, 255, 0.1);
@@ -65,15 +66,10 @@
   
         &__image {
           position: relative;
-  width: 48px;
-  height: 48px;
+  width: 100%;
+  height: auto;
   overflow: hidden;
-  border-radius: 50%;
-
-  @media (max-width: $phone) {
-    width: 28px;
-  height: 28px;
-  }
+  // border-radius: 50%;
 
 }
   
@@ -84,6 +80,7 @@
             margin-bottom: 8px;
             text-transform: uppercase;
             font-family: "Space Grotesk";
+            white-space: nowrap;
 
   
             // @media (max-width: $phone) {

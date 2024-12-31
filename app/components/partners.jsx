@@ -83,100 +83,100 @@ export default function Partners() {
 
           <div className="partners__grid__card__group">
             <div>Avalanche</div>
-            <div>Sponsors</div>
+            <div>Sponsor</div>
           </div>
         </div>
         <div className="partners__grid__card">
           <div className="partners__grid__card__image">
-            <OptimizedImage src="https://res.cloudinary.com/thewebplug/image/upload/v1735602756/SAVE_20241202_085652_1_ryprsv.jpg" objectFit="" layout="fill" alt="" />
+            <OptimizedImage className="partners__grid__card__image__img" src="https://res.cloudinary.com/thewebplug/image/upload/v1735602756/SAVE_20241202_085652_1_ryprsv.jpg" width={48} height={48} alt="" />
           </div>
 
           <div className="partners__grid__card__group">
             <div>Off The Grid</div>
-            <div>Sponsors</div>
+            <div>Sponsor</div>
           </div>
         </div>
         <div className="partners__grid__card">
           <div className="partners__grid__card__image">
-            <OptimizedImage src="https://res.cloudinary.com/thewebplug/image/upload/v1735602755/SAVE_20241202_085717_1_oyoe98.jpg" objectFit="" layout="fill" alt="" />
+            <OptimizedImage className="partners__grid__card__image__img" src="https://res.cloudinary.com/thewebplug/image/upload/v1735602755/SAVE_20241202_085717_1_oyoe98.jpg" width={48} height={24} alt="" />
           </div>
 
           <div className="partners__grid__card__group">
             <div>Wayfinders</div>
-            <div>Sponsors</div>
+            <div>Sponsor</div>
           </div>
         </div>
         <div className="partners__grid__card">
           <div className="partners__grid__card__image">
-            <OptimizedImage src="https://res.cloudinary.com/thewebplug/image/upload/v1735602755/SAVE_20241202_085834_1_kocm3p.jpg" objectFit="" layout="fill" alt="" />
+            <OptimizedImage className="partners__grid__card__image__img" src="https://res.cloudinary.com/thewebplug/image/upload/v1735602755/SAVE_20241202_085834_1_kocm3p.jpg" width={48} height={20} alt="" />
           </div>
 
           <div className="partners__grid__card__group">
             <div>Web3 Nigeria</div>
-            <div>Sponsors</div>
+            <div>Sponsor</div>
           </div>
         </div>
         <div className="partners__grid__card">
           <div className="partners__grid__card__image">
-            <OptimizedImage src="https://res.cloudinary.com/thewebplug/image/upload/v1735602755/SAVE_20241202_085628_1_wy6fuy.jpg" objectFit="" layout="fill" alt="" />
+            <OptimizedImage className="partners__grid__card__image__img" src="https://res.cloudinary.com/thewebplug/image/upload/v1735602755/SAVE_20241202_085628_1_wy6fuy.jpg" width={48} height={24} alt="" />
           </div>
 
           <div className="partners__grid__card__group">
             <div>SeiFarmers</div>
-            <div>Sponsors</div>
+            <div>Sponsor</div>
           </div>
         </div>
         <div className="partners__grid__card">
           <div className="partners__grid__card__image">
-            <OptimizedImage src="https://res.cloudinary.com/thewebplug/image/upload/v1735602755/SAVE_20241202_085739_1_gp9cug.jpg" objectFit="" layout="fill" alt="" />
+            <OptimizedImage className="partners__grid__card__image__img" src="https://res.cloudinary.com/thewebplug/image/upload/v1735602755/SAVE_20241202_085739_1_gp9cug.jpg" width={48} height={48} alt="" />
           </div>
 
           <div className="partners__grid__card__group">
             <div>SeiFarmers</div>
-            <div>Sponsors</div>
+            <div>Sponsor</div>
           </div>
         </div>
         <div className="partners__grid__card">
           <div className="partners__grid__card__image">
-            <OptimizedImage src="https://res.cloudinary.com/thewebplug/image/upload/v1735602755/SAVE_20241202_085843_1_zkofnf.jpg" objectFit="" layout="fill" alt="" />
+            <OptimizedImage className="partners__grid__card__image__img" src="https://res.cloudinary.com/thewebplug/image/upload/v1735602755/SAVE_20241202_085843_1_zkofnf.jpg" width={48} height={20} alt="" />
           </div>
 
           <div className="partners__grid__card__group">
             <div>Invigorate DAO</div>
-            <div>Sponsors</div>
+            <div>Sponsor</div>
           </div>
         </div>
         <div className="partners__grid__card">
           <div className="partners__grid__card__image">
-            <OptimizedImage src="https://res.cloudinary.com/thewebplug/image/upload/v1735602755/SAVE_20241202_085641_1_oj0oo6.jpg" objectFit="" layout="fill" alt="" />
+            <OptimizedImage className="partners__grid__card__image__img" src="https://res.cloudinary.com/thewebplug/image/upload/v1735602755/SAVE_20241202_085641_1_oj0oo6.jpg" width={48} height={48} alt="" />
           </div>
 
           <div className="partners__grid__card__group">
             <div>Blockchain Club Unilag</div>
-            <div>Sponsors</div>
+            <div>Sponsor</div>
           </div>
         </div>
         <div className="partners__grid__card">
           <div className="partners__grid__card__image">
-            <OptimizedImage src="https://res.cloudinary.com/thewebplug/image/upload/v1735602756/SAVE_20241202_085728_1_oye0kp.jpg" objectFit="" layout="fill" alt="" />
+            <OptimizedImage className="partners__grid__card__image__img" src="https://res.cloudinary.com/thewebplug/image/upload/v1735602756/SAVE_20241202_085728_1_oye0kp.jpg" width={48} height={20} alt="" />
           </div>
 
           <div className="partners__grid__card__group">
             <div>Defi Ravers</div>
-            <div>Sponsors</div>
+            <div>Sponsor</div>
           </div>
         </div>
         
         <div className="partners__grid__card">
           <div className="partners__grid__card__image">
-            <OptimizedImage src="https://res.cloudinary.com/thewebplug/image/upload/v1735602756/SAVE_20241202_085806_1_k4ql3b.jpg" 
-          objectFit="" layout="fill" alt=""
+            <OptimizedImage className="partners__grid__card__image__img" src="https://res.cloudinary.com/thewebplug/image/upload/v1735602756/SAVE_20241202_085806_1_k4ql3b.jpg" 
+          width={48} height={18} alt=""
             />
           </div>
 
           <div className="partners__grid__card__group">
             <div>Fortizo DAO</div>
-            <div>Sponsors</div>
+            <div>Sponsor</div>
           </div>
         </div>
       </div>

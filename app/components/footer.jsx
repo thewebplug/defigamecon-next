@@ -70,6 +70,7 @@ export default function Footer() {
                 viewBox="0 0 512 512"
                 xmlSpace="preserve"
                 stroke="#fff"
+                onClick={() => window.open("https://x.com/DefiGameCon", '_blank')}
               >
                 <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
                 <g
