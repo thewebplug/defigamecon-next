@@ -12,10 +12,22 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+
 export const metadata = {
   title: "Defi Gamecon",
   description: "Africa's Gaming Portal",
-};
+  openGraph: {
+    title: "Defi Gamecon",
+  description: "Africa's Gaming Portal",
+    images: [
+      {
+        url: '/assets/logo.jpg', // Replace with your image path
+        width: 800,
+        height: 800,
+      },
+    ],
+  },
+}
 
 export default function RootLayout({ children }) {
   return (
