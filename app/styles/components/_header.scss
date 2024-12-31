@@ -63,8 +63,6 @@
         color: $text-color;
 
         @media (max-width: $phone) {
-          font-size: 10px;
-          height: 16px;
         }
 
         &::placeholder {
