@@ -18,10 +18,12 @@ export default function ImageGrid({images}) {
         <div className="event__grid">
           <div className="event__grid__preview">
             {images?.map((image, index) => 
-            <div className={image?.public_id === selectedImage?.public_id ? "event__grid__preview__active event__grid__preview__image" : "event__grid__preview__image"}>
+            <div className={image?.public_id === selectedImage?.public_id ? "event__grid__preview__active event__grid__preview__image" : "event__grid__preview__image"} key={image?.public_id}>
                <OptimizedImage  src={image?.url} alt=""
             onClick={() => setSelectedImage(image)}
-            key={index}
+            objectFit="cover"
+            layout="fill"
+            
             />
             </div>
            
@@ -29,7 +31,8 @@ export default function ImageGrid({images}) {
           </div>
 
           <div className="event__grid__view">
-          <OptimizedImage  src={selectedImage?.url} alt="" />
+          <OptimizedImage  src={selectedImage?.url} alt=""  objectFit="cover"
+            layout="fill" />
           </div>
          
         </div>

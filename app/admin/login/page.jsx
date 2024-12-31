@@ -13,6 +13,7 @@ import { login } from "../../apis";
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
+import OptimizedImage from "@/app/components/optimizedImage";
 
 
 
@@ -58,7 +59,7 @@ const AdminLogin = () => {
     <div className="login">
       <div className="login__card">
         <div className="login__card-background">
-          <Image src={LoginIllustration} alt="" />
+          <OptimizedImage src={LoginIllustration} alt="" />
         </div>
         <div className="login__card-container">
           <form className="container-login" onSubmit={handleSubmit}>

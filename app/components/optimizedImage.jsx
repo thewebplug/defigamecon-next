@@ -6,6 +6,7 @@ export default function OptimizedImage({ src, alt, ...props }) {
   const optimizedUrl = getOptimizedImageUrl(src);
   
   return (
+    src && 
     <Image
       src={optimizedUrl}
       alt={alt || ""}

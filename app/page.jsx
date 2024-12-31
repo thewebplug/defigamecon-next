@@ -1,5 +1,4 @@
 "use client";
-import Image2 from "@/public/assets/gunzilla.png";
 import Image8 from "@/public/assets/Rectangle 60.png";
 import Image9 from "@/public/assets/NFT 2.png";
 import Image12 from "@/public/assets/9999.png";
@@ -19,6 +18,7 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { getAllEvents, getAllGames } from "./apis";
 import OptimizedImage from "./components/optimizedImage";
+import GameCard from "./components/gameCard";
 
 
 export default function Home() {
@@ -1327,73 +1327,20 @@ export default function Home() {
               <div className="auction__slide__slide-inner">
                 
                 
-              
-                
-                {games?.map((game) => 
-                  <div className="auction__slide__slide-inner__card" key={game?._id}>
-                  <div className="auction__slide__slide-inner__card__image">
-                  <OptimizedImage src={game?.image?.url} alt="" objectFit="cover" layout="fill" />
-                    </div>
-                  
-                  <div className="auction__slide__slide-inner__card__title-flex">
-                    <div>
-                      <div>{game?.title}</div>
-                      <div>
-                        <Image src={Image2} alt="" />
-                        By {game?.creator}
-                      </div>
-                    </div>
-                    <button>
-                    <span>Available</span>
-                    </button>
-                  </div>
-                  {/* <div className="auction__slide__slide-inner__card__title-flex2">
-                    <div>
-                      Highest bid: <span>1.2 ETH</span>
-                    </div>
-                    <div>3 In pack</div>
-                  </div> */}
-                  <div className="auction__slide__slide-inner__card__button-group">
-                    <button onClick={() => window.open(game?.link, '_blank')}>Get game</button>
-                    <button onClick={() => window.open(game?.link, '_blank')}>View</button>
-                  </div>
-                </div>
+                {games?.map((game, index) => 
+                 <GameCard game={game} key={index} />
+
+                )
+                }
+                {games?.map((game, index) => 
+                 <GameCard game={game} key={index} />
 
                 )
                 }
                 
-                {games?.map((game) => 
-                  <div className="auction__slide__slide-inner__card" key={game?._id}>
-                  <div className="auction__slide__slide-inner__card__image">
-                  <OptimizedImage src={game?.image?.url} alt="" objectFit="cover" layout="fill" />
-                    </div>
-                  
-                  <div className="auction__slide__slide-inner__card__title-flex">
-                    <div>
-                      <div>{game?.title}</div>
-                      <div>
-                        <Image src={Image2} alt="" />
-                        By {game?.creator}
-                      </div>
-                    </div>
-                    <button>
-                    <span>Available</span>
-                    </button>
-                  </div>
-                  {/* <div className="auction__slide__slide-inner__card__title-flex2">
-                    <div>
-                      Highest bid: <span>1.2 ETH</span>
-                    </div>
-                    <div>3 In pack</div>
-                  </div> */}
-                  <div className="auction__slide__slide-inner__card__button-group">
-                    <button onClick={() => window.open(game?.link, '_blank')}>Get game</button>
-                    <button onClick={() => window.open(game?.link, '_blank')}>View</button>
-                  </div>
-                </div>
-
-                )
-                }
+               
+                
+             
                 
                
                

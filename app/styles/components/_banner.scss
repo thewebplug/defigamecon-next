@@ -1,7 +1,13 @@
 .banner {
-    width: 100%;
-    height: auto;
+    // position: relative;
+    // width: 100%;
     border-radius: 24px;
     border: 2px solid #fff;
     margin-bottom: 120px;
+    /* Remove fixed height to allow container to adapt */
+    &__image {
+        width: 100%;
+        height: auto;
+        border-radius: inherit; /* Inherit border radius from parent */
+    }
 }

@@ -1,8 +1,9 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import OptimizedImage from "./optimizedImage";
+import { memo } from "react";
 
-export default function EventCard({ event, past = false }) {
+const EventCard = memo(function EventCard({ event, past = false }) {
   const router = useRouter();
 
   return (
@@ -51,4 +52,9 @@ export default function EventCard({ event, past = false }) {
       </div>
     </div>
   );
-}
+},  (prevProps, nextProps) => {
+  return prevProps?.event?._id === nextProps?.event?._id && 
+  prevProps?.event?.title === nextProps?.event?.title;
+})
+
+export default EventCard;
