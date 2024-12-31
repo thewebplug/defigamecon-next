@@ -68,6 +68,11 @@
   overflow: hidden;
   border-radius: 50%;
 
+  @media (max-width: $phone) {
+    width: 32px;
+  height: 32px;
+  }
+
 }
   
         &__group {
