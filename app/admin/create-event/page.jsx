@@ -138,7 +138,7 @@ const CreateEvent = () => {
       <Sidebar />
 
       <div className="admin-form__main">
-        <Link href="/admin/events">
+        <Link prefetch={true} href="/admin/events">
         <svg
           className="admin-form__main__svg"
           viewBox="0 0 1024 1024"

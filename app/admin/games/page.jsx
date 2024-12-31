@@ -50,7 +50,7 @@ import { useRouter } from "next/navigation";
         <Sidebar />
         <div className="main">
           <div className="title">Games</div>
-          <Link href="/admin/add-game">
+          <Link prefetch={true} href="/admin/add-game">
         <button className="register">
           <svg
             viewBox="0 0 24 24"
@@ -96,7 +96,7 @@ import { useRouter } from "next/navigation";
                   <TableCell className="table_row">{item?.title}</TableCell>
                   <TableCell className="table_row">{item?.creator}</TableCell>
                   <TableCell className="table_row">{item?.category}</TableCell>
-                 <TableCell className="table_row active"><Link 
+                 <TableCell className="table_row active"><Link prefetch={true} 
                  href={`/admin/edit-game/${item?._id}`}
                  >Update game</Link></TableCell>
                  <TableCell className="table_row active"><a 

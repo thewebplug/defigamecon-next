@@ -166,8 +166,8 @@ export default function Home() {
                 The biggest web3 gaming convention in Africa. Plan, host, and manage unforgettable Web3 gaming events with ease. Connect players, celebrate innovation, and redefine the gaming experience.
                 </div>
                 <div className="nft-main__hero__inner__button-group">
-                  <Link href="/events">Explore</Link>
-                  <Link href="/#upcoming-events">Upcoming events</Link>
+                  <Link prefetch={true} href="/events">Explore</Link>
+                  <Link prefetch={true} href="/#upcoming-events">Upcoming events</Link>
                 </div>
               </div>
 
@@ -1240,7 +1240,7 @@ export default function Home() {
           <div className="collection" id="upcoming-events">
             <div className="collection__group">
               <h2>Upcoming Events</h2>
-              <Link href='/events'>View more</Link>
+              <Link prefetch={true} href='/events'>View more</Link>
             </div>
 
             <div className="collection__grid">
@@ -1376,7 +1376,7 @@ export default function Home() {
           <div className="collection" id="past-events">
             <div className="collection__group">
               <h2>Past Events</h2>
-              <Link href="/events">View more</Link>
+              <Link prefetch={true} href="/events">View more</Link>
             </div>
 
             <div className="collection__grid">

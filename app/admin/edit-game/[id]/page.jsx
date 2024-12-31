@@ -92,7 +92,7 @@ const EditGame = () => {
       <Sidebar />
 
       <div className="admin-form__main">
-      <Link href="/admin/games">
+      <Link prefetch={true} href="/admin/games">
         <svg
           className="admin-form__main__svg"
           viewBox="0 0 1024 1024"

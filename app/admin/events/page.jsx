@@ -51,7 +51,7 @@ import { deleteEvent, getAllEvents } from "@/app/apis";
         <Sidebar />
         <div className="main">
           <div className="title">Events</div>
-          <Link href="/admin/create-event">
+          <Link prefetch={true} href="/admin/create-event">
         <button className="register">
           <svg
             viewBox="0 0 24 24"
@@ -98,7 +98,7 @@ import { deleteEvent, getAllEvents } from "@/app/apis";
                   <TableCell className="table_row">{item?.title}</TableCell>
                   <TableCell className="table_row">{item?.description}</TableCell>
                   <TableCell className="table_row">{item?.categories?.map(category => `${category}, `)}</TableCell>
-                 <TableCell className="table_row active"><Link 
+                 <TableCell className="table_row active"><Link prefetch={true} 
                  href={`/admin/edit-event/${item?._id}`}
                  >Update event</Link></TableCell>
                  <TableCell className="table_row active"><a 

@@ -44,7 +44,7 @@ const EventCard = memo(function EventCard({ event, past = false }) {
       </div>
       <div className="event-card__button-group">
         <div>{event?.title}</div>
-        <Link
+        <Link prefetch={true}
           href={past ? `/event/${event?._id}` : `/upcoming-event/${event?._id}`}
         >
           See more

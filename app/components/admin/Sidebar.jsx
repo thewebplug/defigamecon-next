@@ -27,7 +27,7 @@ const Sidebar = () => {
       </div>
 
       <div className="admin_nav-container-inner">
-        <Link href="/admin/games" className="link">
+        <Link prefetch={true} href="/admin/games" className="link">
           <div
             className={
               pathname?.includes("game")
@@ -58,7 +58,7 @@ const Sidebar = () => {
           </div>
         </Link>
 
-        <Link href="/admin/events" className="link">
+        <Link prefetch={true} href="/admin/events" className="link">
           <div
             className={
               pathname?.includes("event")

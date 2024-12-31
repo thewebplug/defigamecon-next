@@ -17,7 +17,7 @@ export default function Header({ active, setActive }) {
   return (
     <>
       <header className="header">
-        <Link className="header__logo" href="/">
+        <Link prefetch={true} className="header__logo" href="/">
           <Image src={Logo} alt="" />
           <div>
             DEFI <br />
