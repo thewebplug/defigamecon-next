@@ -25,8 +25,8 @@ import { useRouter } from "next/navigation";
 
     const handleGetGames = async () => {
         const response = await getAllGames(auth?.token);
-        if(response?.status === 200) {
-          setGames(response?.data);
+         if(response?.length > 0) {
+          setGames(response);
         }
     }
 

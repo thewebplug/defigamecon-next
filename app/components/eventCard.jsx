@@ -1,10 +1,8 @@
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import OptimizedImage from "./optimizedImage";
 import { memo } from "react";
 
 const EventCard = memo(function EventCard({ event, past = false }) {
-  const router = useRouter();
 
   return (
     <div className="event-card">

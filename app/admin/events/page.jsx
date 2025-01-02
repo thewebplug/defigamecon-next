@@ -25,8 +25,8 @@ import { deleteEvent, getAllEvents } from "@/app/apis";
 
     const handleGetEvents = async () => {
         const response = await getAllEvents(auth?.token);
-        if(response?.status === 200) {
-          setEvents(response?.data);
+        if(response?.length > 0) {
+          setEvents(response);
         }
     }
 

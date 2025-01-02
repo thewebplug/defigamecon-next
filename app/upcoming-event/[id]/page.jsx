@@ -1,4 +1,3 @@
-"use client"
 import Header from "@/app/components/header";
 import Explore from "@/app/components/explore";
 import Footer from "@/app/components/footer";
@@ -7,66 +6,60 @@ import ImageGrid from "@/app/components/imageGrid";
 import GetNotified from "@/app/components/getNotified";
 import EventBanner from "@/app/components/eventBanner";
 import GameVideos from "@/app/components/gameVideos";
-import React, { useState, useEffect } from "react";
 import { getEvent } from "@/app/apis";
-import { useParams } from "next/navigation";
 
-export default function UpcomingEvent() {
-    const {id} = useParams();
+async function fetchEvent(id) {
+    const event = await getEvent(id);
+    return event;
+}
 
-  const [event, setEvent] = useState(null);
+export default async function UpcomingEvent({ params }) {
+    const { id } = params; 
+    const event = await fetchEvent(id); 
 
-  const handleGetEvent = async () => {
-    const response = await getEvent(id);
-    setEvent(response?.data);
-  };
+    return (
+        <>
+            <br />
+            <br />
+            <Header />
+            <main className="event">
+                <div className="event__title">
+                    {event?.title?.split(" ")[0] && (
+                        <span>
+                            {event?.title?.split(" ")[0]}{" "}
+                            {event?.categories[0] && (
+                                <div className="event__pill">{event?.categories[0]}</div>
+                            )}{" "}
+                            {event?.categories[1] && (
+                                <div className="event__pill">{event?.categories[1]}</div>
+                            )}
+                        </span>
+                    )}{" "}
+                    {event?.title?.split(" ")[1] && (
+                        <span>
+                            {event?.title?.split(" ")[1]}{" "}
+                            {event?.categories[2] && (
+                                <div className="event__pill">{event?.categories[2]}</div>
+                            )}{" "}
+                            {event?.categories[3] && (
+                                <div className="event__pill">{event?.categories[3]}</div>
+                            )}
+                        </span>
+                    )}{" "}
+                    {event?.title?.split(" ")[2] && (
+                        <span>
+                            {event?.title?.split(" ")[2]}{" "}
+                            {event?.categories[4] && (
+                                <div className="event__pill">{event?.categories[4]}</div>
+                            )}
+                        </span>
+                    )}
+                </div>
 
-  useEffect(() => {
-    handleGetEvent();
-  }, []);
-  return (
-    <>
-      <br />
-      <br />
-      <Header />
-      <main className="event">
-      <div className="event__title">
-          {event?.title?.split(" ")[0] && (
-            <span>
-              {event?.title?.split(" ")[0]}{" "}
-              {event?.categories[0] && (
-                <div className="event__pill">{event?.categories[0]}</div>
-              )}{" "}
-              {event?.categories[1] && (
-                <div className="event__pill">{event?.categories[1]}</div>
-              )}
-            </span>
-          )}{" "}
-          {event?.title?.split(" ")[1] && (
-            <span>
-              {event?.title?.split(" ")[1]}{" "}
-              {event?.categories[2] && (
-                <div className="event__pill">{event?.categories[2]}</div>
-              )}{" "}
-              {event?.categories[3] && (
-                <div className="event__pill">{event?.categories[3]}</div>
-              )}
-            </span>
-          )}{" "}
-          {event?.title?.split(" ")[2] && (
-            <span>
-              {event?.title?.split(" ")[2]}{" "}
-              {event?.categories[4] && (
-                <div className="event__pill">{event?.categories[4]}</div>
-              )}
-            </span>
-          )}
-        </div>
-
-        <div className="event__subtitle">
-        {event?.description}
-        </div>
-        <div className="event__venue-date-time">
+                <div className="event__subtitle">
+                    {event?.description}
+                </div>
+                <div className="event__venue-date-time">
           <div>
           <svg
               width="24"
@@ -117,26 +110,24 @@ export default function UpcomingEvent() {
           </div>
          
         </div>
-        <button className="event__ticket">Get tickets</button>
+                <button className="event__ticket">Get tickets</button>
 
-        <EventBanner image={event?.banner} />
+                <EventBanner image={event?.banner} />
 
-       
+                <div className="event__past">
+                    <div className="event__past__title">Last edition</div>
+                    <div className="event__past__subtitle">
+                        Shots from Defi Gamecon '23
+                    </div>
+                    <ImageGrid images={event?.images} />
+                </div>
+                <Highlights videos={event?.videos} />
+                <GetNotified />
+                <GameVideos />
+            </main>
 
-        <div className="event__past">
-          <div className="event__past__title">Last edition</div>
-          <div className="event__past__subtitle">
-            Shots from Defi Gamecon '23
-          </div>
-          <ImageGrid images={event?.images} />
-        </div>
-        <Highlights videos={event?.videos} />
-        <GetNotified />
-        <GameVideos />
-      </main>
-
-      <Explore />
-      <Footer />
-    </>
-  );
+            <Explore />
+            <Footer />
+        </>
+    );
 }

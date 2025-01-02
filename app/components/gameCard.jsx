@@ -1,3 +1,4 @@
+"use client"
 import Image2 from "@/public/assets/logo.jpg";
 import OptimizedImage from "./optimizedImage";
 import Image from "next/image";

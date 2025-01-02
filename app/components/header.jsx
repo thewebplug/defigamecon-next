@@ -1,11 +1,13 @@
+"use client"
 import { useEffect, useState } from "react";
 import Logo from "@/public/assets/logo.jpg";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 
-export default function Header({ active, setActive }) {
+export default function Header() {
   const [text, setText] = useState("");
+  const [active, setActive] = useState(false);
   const router = useRouter();
 
   const handleSubmit = async (e) => {

@@ -4,26 +4,38 @@ import axios from "axios";
   
 export const getAllEvents = async () => {
   try {
-    const res = await axios.get(
-      `${process.env.NEXT_PUBLIC_URL}/events`
-    );
-
-    return res;
+    const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/events`, {
+      next: {
+        revalidate: 3600 // Revalidate every hour
+      }
+    });
+    
+    if (!res.ok) {
+      throw new Error(`HTTP error! status: ${res.status}`);
+    }
+    
+    return res.json();
   } catch (error) {
-    console.log("ERROR", error);
-    return error?.response;
+    console.error("ERROR", error);
+    throw error;
   }
 };
 
+
 export const getEvent = async (id) => {
   try {
-    const res = await axios.get(
-      `${process.env.NEXT_PUBLIC_URL}/events/${id}`);
-
-    return res;
+    const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/events/${id}`, {
+      next: { revalidate: 3600 } // Revalidate every hour
+    });
+    
+    if (!res.ok) {
+      throw new Error(`HTTP error! status: ${res.status}`);
+    }
+    
+    return res.json();
   } catch (error) {
-    console.log("ERROR", error);
-    return error?.response;
+    console.error("ERROR", error);
+    throw error;
   }
 };
 
@@ -142,26 +154,35 @@ export const updateGame = async (
 
 export const getAllGames = async () => {
   try {
-    const res = await axios.get(
-      `${process.env.NEXT_PUBLIC_URL}/games`
-    );
-
-    return res;
+    const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/games`, {
+      next: { revalidate: 3600 } // Revalidate every hour
+    });
+    
+    if (!res.ok) {
+      throw new Error(`HTTP error! status: ${res.status}`);
+    }
+    
+    return res.json();
   } catch (error) {
-    console.log("ERROR", error);
-    return error?.response;
+    console.error("ERROR", error);
+    throw error;
   }
 };
 
 export const getGame = async (id) => {
   try {
-    const res = await axios.get(
-      `${process.env.NEXT_PUBLIC_URL}/games/${id}`);
-
-    return res;
+    const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/games/${id}`, {
+      next: { revalidate: 3600 } // Revalidate every hour
+    });
+    
+    if (!res.ok) {
+      throw new Error(`HTTP error! status: ${res.status}`);
+    }
+    
+    return res.json();
   } catch (error) {
-    console.log("ERROR", error);
-    return error?.response;
+    console.error("ERROR", error);
+    throw error;
   }
 };
 

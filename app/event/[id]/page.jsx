@@ -1,27 +1,19 @@
-"use client"
 import Header from "@/app/components/header";
 import Explore from "@/app/components/explore";
 import Footer from "@/app/components/footer";
 import Highlights from "@/app/components/highlights";
 import ImageGrid from "@/app/components/imageGrid";
 import EventBanner from "@/app/components/eventBanner";
-import React, { useEffect, useState } from "react";
 import { getEvent } from "@/app/apis";
-import { useParams } from "next/navigation";
 
-export default function Event() {
-    const {id} = useParams();
+async function fetchEvent(id) {
+  const event = await getEvent(id);
+  return event;
+}
 
-  const [event, setEvent] = useState(null);
-
-  const handleGetEvent = async () => {
-    const response = await getEvent(id);
-    setEvent(response?.data);
-  };
-
-  useEffect(() => {
-    handleGetEvent();
-  }, []);
+export default async function Event({ params }) {
+  const { id } = params; 
+    const event = await fetchEvent(id); // Fetch event data
 
   return (
     <>

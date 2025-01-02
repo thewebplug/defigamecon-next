@@ -133,11 +133,11 @@ const EditEvent = () => {
       const response = await getEvent(id);
       // console.log('getEvent', response);
       
-      reset(response?.data);
-      setImages(response?.data?.images)
-      setVideos(response?.data?.videos)
-      setBanner(response?.data?.banner)
-      setSelectedCategories(response?.data?.categories)
+      reset(response);
+      setImages(response?.images)
+      setVideos(response?.videos)
+      setBanner(response?.banner)
+      setSelectedCategories(response?.categories)
     } 
   
     useEffect(() => {

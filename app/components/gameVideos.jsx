@@ -1,3 +1,4 @@
+"use client"
 import { useEffect } from "react";
 import { useState } from "react";
 import { useSelector } from "react-redux";
@@ -6,15 +7,16 @@ import OptimizedImage from "./optimizedImage";
 import OptimizedVideo from "./optimizedVideo";
 
 export default function GameVideos() {
-  const auth = useSelector((state) => state.auth);
 
   const [videos, setVideos] = useState([]);
   const [selectedVideo, setSelectedVideo] = useState(null);
 
   const handleGetGames = async () => {
-    const response = await getAllGames(auth?.token);
-    if (response?.status === 200) {
-      const temp = response?.data.flatMap((item) =>
+    const response = await getAllGames();
+    console.log('response getAllGames', response);
+    
+    if (response?.length > 0) {
+      const temp = response?.flatMap((item) =>
         item.videos.map((video) => ({
           title: item.title,
           video: video,

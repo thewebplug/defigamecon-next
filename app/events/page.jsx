@@ -1,26 +1,27 @@
-"use client"
 import Header from "../components/header";
 import Explore from "../components/explore";
 import Footer from "../components/footer";
 import EventCard from "../components/eventCard";
-import { getAllEvents } from "@/app/apis";
-import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { getAllEvents } from "../apis";
 
-export default function Events() {
-  const auth = useSelector((state) => state.auth);
-  const [events, setEvents] = useState([]);
 
-  const handleGetEvents = async () => {
-    const response = await getAllEvents(auth?.token);
-    if(response?.status === 200) {
-      setEvents(response?.data);
-    }
+
+
+export async function generateMetadata() {
+  return {
+    title: "Events",
+    description: "Keep track of our upcoming and past events",
   };
+}
 
-  useEffect(() => {
-    handleGetEvents();
-  }, []);
+async function getEvents() {
+  const events = await getAllEvents();
+  
+  return events || [];
+}
+
+export default async function Events() {
+  const [events] = await Promise.all([getEvents()]);
 
   return (
     <>
@@ -34,7 +35,6 @@ export default function Events() {
           ))}
         </div>
       </main>
-
       <Explore />
       <Footer />
     </>

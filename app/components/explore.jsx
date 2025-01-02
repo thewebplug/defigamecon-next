@@ -1,3 +1,4 @@
+"use client"
 import { useEffect, useState } from "react";
 import { getAllGames } from "@/app/apis";
 import { useSelector } from "react-redux";
@@ -11,10 +12,10 @@ export default function Explore() {
   const [gamesFixed, setGamesFixed] = useState([]);
 
   const handleGetGames = async () => {
-    const response = await getAllGames(auth?.token);
-    if (response?.status === 200) {
-      setGames(response?.data);
-      setGamesFixed(response?.data);
+    const games = await getAllGames();
+    if (games?.length > 0) {
+      setGames(games);
+      setGamesFixed(games);
     }
   };
 

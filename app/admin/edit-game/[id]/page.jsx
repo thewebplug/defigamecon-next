@@ -78,9 +78,9 @@ const EditGame = () => {
     const response = await getGame(id);
     console.log('response', response);
     
-    reset(response?.data);
-    setImage(response?.data?.image)
-    setVideos(response?.data?.videos)
+    reset(response);
+    setImage(response?.image)
+    setVideos(response?.videos)
   } 
 
   useEffect(() => {
